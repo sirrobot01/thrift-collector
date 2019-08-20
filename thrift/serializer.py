@@ -9,9 +9,10 @@ class CustomRegisterSerializer(RegisterSerializer):
         super(CustomRegisterSerializer, self).get_cleaned_data()
 
         return {
-            'username': self.validated_data.get('username', ''),
-            'password1': self.validated_data.get('password1', ''),
-            'email': self.validated_data.get('email', ''),
             'first_name': self.validated_data.get('first_name', ''),
-            'last_name':self.validated_data.get('last_name', '')
+            'last_name': self.validated_data.get('last_name', ''),
+            'username': self.validated_data.get('username', ''),
+            'email': self.validated_data.get('email', ''),
+            'password1': self.validated_data.get('password1', ''),
+
         }

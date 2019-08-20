@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,6 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$sf7-k!_a#2h4er(ytcc7vek-l7h((@40mk*v2f*wbny&f)4#-'
+PAYSTACK_SECRET_KEY = 'sk_test_c7f5d0f0a3a4ed4a499d47185d25b217d62a638c'
+PAYSTACK_PUBLIC_KEY = 'pk_test_ac788eabf1460af20ef122646c21298b87bf420c'
+
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=4000),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'paystack',
 
     'api',
 ]
@@ -88,6 +98,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'thrift.wsgi.application'
+
+
 
 
 # Database
